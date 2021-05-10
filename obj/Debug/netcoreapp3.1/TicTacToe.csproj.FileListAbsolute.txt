@@ -1,0 +1,26 @@
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.exe
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.deps.json
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.runtimeconfig.json
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.runtimeconfig.dev.json
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.dll
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.pdb
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.csprojAssemblyReference.cache
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.AssemblyInfoInputs.cache
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.AssemblyInfo.cs
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.dll
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.pdb
+C:\Users\Jhunnior A. Taveras\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.genruntimeconfig.cache
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.exe
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.deps.json
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.runtimeconfig.json
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.runtimeconfig.dev.json
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.dll
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\bin\Debug\netcoreapp3.1\TicTacToe.pdb
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.csprojAssemblyReference.cache
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.AssemblyInfoInputs.cache
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.AssemblyInfo.cs
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.dll
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.pdb
+C:\Users\jtave\OneDrive\Documents\Programas\C#\TicTacToe\obj\Debug\netcoreapp3.1\TicTacToe.genruntimeconfig.cache
