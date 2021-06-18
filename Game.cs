@@ -8,56 +8,23 @@ namespace TicTacToe
         readonly char[] moves = { '-', '-', '-', '-', '-', '-', '-', '-', '-' };
         string coordinate;
         int counterXO = 0;
+        private readonly Random random = new Random();
+        bool endGame = true;
 
-        public void StartGame()
+        private void OneVsOne()
         {
-            Console.Title = "Tic Tac Toe";
-
-            Console.WriteLine("Inserte las coordenadas: (x,y)");
+            Console.WriteLine("Enter the coordinates: (x,y)");
             ShowBoard();
             
             do
             {
-                Console.Write("Inserte las coordenadas: ");
+                Console.Write("Enter the coordinates: ");
                 coordinate = Console.ReadLine();
+                CheckMove(coordinate);
 
-                if (ValidMove())
-                {
-                    ShowBoard();
+            } while (endGame);
 
-                    if (EndGame())
-                    {
-                        if (counterXO % 2 == 0)
-                        {
-                            Console.WriteLine("O Gano!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("X Gano!");
-                        }
-                        break;
-                    }
-                    else if (counterXO > 8)
-                    {
-                        Console.WriteLine("Empate!");
-                        break;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Movimiento Invalido. Intentelo de nuevo.");
-                }
-
-            } while (true);
-
-            Console.WriteLine("Desea jugar de nuevo? si/no");
-            string juego = Console.ReadLine();
-
-            if (juego.ToLower() == "si")
-            {
-				Console.Clear();
-                NewGame();
-            }
+            NewGame();
         }
 
         private void ShowBoard()
@@ -71,19 +38,19 @@ namespace TicTacToe
     
         private bool ValidMove()
         {
-            for (int x = 0; x < plays.Length; x++)
+            for (int i = 0; i < plays.GetLength(0); i++)
             {
-                if (plays[x].Equals(coordinate))
+                if (plays[i].Equals(coordinate))
                 {
-                    if (moves[x].Equals('-'))
+                    if (moves[i].Equals('-'))
                     {
                         if (counterXO % 2 == 0)
                         {
-                            moves[x] = 'X';
+                            moves[i] = 'X';
                         }
                         else
                         {
-                            moves[x] = 'O';
+                            moves[i] = 'O';
                         }
                         counterXO++;
                         return true;
@@ -99,52 +66,147 @@ namespace TicTacToe
 
         private bool EndGame()
         {
-            if ((moves[0].Equals(moves[1]) && moves[1].Equals(moves[2])) && (!moves[1].Equals('-')))
+            if (moves[0].Equals(moves[1]) && moves[1].Equals(moves[2]) && !(moves[1].Equals('-')))
             {
                 return true;
             }
-            else if ((moves[3].Equals(moves[4]) && moves[4].Equals(moves[5])) && (!moves[4].Equals('-')))
+            else if (moves[3].Equals(moves[4]) && moves[4].Equals(moves[5]) && !(moves[4].Equals('-')))
             {
                 return true;
             }
-            else if ((moves[6].Equals(moves[7]) && moves[7].Equals(moves[8])) && (!moves[7].Equals('-')))
+            else if (moves[6].Equals(moves[7]) && moves[7].Equals(moves[8]) && !(moves[7].Equals('-')))
             {
                 return true;
             }
-            else if ((moves[0].Equals(moves[3]) && moves[3].Equals(moves[6])) && (!moves[3].Equals('-')))
+            else if (moves[0].Equals(moves[3]) && moves[3].Equals(moves[6]) && !(moves[3].Equals('-')))
             {
                 return true;
             }
-            else if ((moves[1].Equals(moves[4]) && moves[4].Equals(moves[7])) && (!moves[4].Equals('-')))
+            else if (moves[1].Equals(moves[4]) && moves[4].Equals(moves[7]) && !(moves[4].Equals('-')))
             {
                 return true;
             }
-            else if ((moves[2].Equals(moves[5]) && moves[5].Equals(moves[8])) && (!moves[5].Equals('-')))
+            else if (moves[2].Equals(moves[5]) && moves[5].Equals(moves[8]) && !(moves[5].Equals('-')))
             {
                 return true;
             }
-            else if ((moves[0].Equals(moves[4]) && moves[4].Equals(moves[8])) && (!moves[4].Equals('-')))
+            else if (moves[0].Equals(moves[4]) && moves[4].Equals(moves[8]) && !(moves[4].Equals('-')))
             {
                 return true;
             }
-            else if ((moves[6].Equals(moves[4]) && moves[4].Equals(moves[2])) && (!moves[4].Equals('-')))
+            else if (moves[6].Equals(moves[4]) && moves[4].Equals(moves[2]) && !(moves[4].Equals('-')))
             {
                 return true;
             }
             return false;
         }
-    
+
         private void NewGame()
         {
+            Console.WriteLine("Play again? si/no");
+            string juego = Console.ReadLine();
+
             coordinate = null;
             counterXO = 0;
+            endGame = true;
 
             for (int i = 0; i < moves.Length; i++)
             {
                 moves[i] = '-';
             }
 
-            StartGame();
+            if (juego.ToLower() == "si")
+            {
+				Console.Clear();
+                Menu();
+            }
+        }
+
+        public void Menu()
+        {
+            Console.Title = "Tic Tac Toe";
+
+            Console.WriteLine("Please select a number: ");
+            Console.WriteLine("1. 1 vs 1");
+            Console.WriteLine("2. 1 vs Computer");
+
+            string option = Console.ReadLine();
+
+            Console.Clear();
+
+            if (option == "1")
+            {
+                OneVsOne();
+            }
+            else if(option == "2")
+            {
+                OneVsComputer();   
+            }
+        }
+
+        private void OneVsComputer()
+        {
+            Console.WriteLine("Enter the coordinates: (x,y)");
+            ShowBoard();
+            
+            do
+            {
+
+                if (counterXO % 2 == 0)
+                {
+                    Console.Write("Enter the coordinates: ");
+                    coordinate = Console.ReadLine();
+                    CheckMove(coordinate);
+                }
+                else
+                {
+                    Console.ReadKey();
+                    for (int i = 0; i < plays.Length; i++)
+                    {
+                        coordinate = plays[random.Next(9)];
+                        if (CheckMove(coordinate))
+                        {
+                            break;
+                        }
+                    }
+                }
+
+            } while (endGame);
+
+            NewGame();
+        }
+
+        private bool CheckMove(string coordinate)
+        {
+            if (ValidMove())
+            {
+                Console.Clear();
+                ShowBoard();
+
+                if (EndGame())
+                {
+                    if (counterXO % 2 == 0)
+                    {
+                        Console.WriteLine("O Won!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("X Won!");
+                    }
+                    endGame = false;    
+                }
+                else if (counterXO > 8)
+                {
+                    Console.WriteLine("Tie!");
+                    endGame = false;
+                }
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Invalid Move. Please try again.");
+                return false;
+            }
         }
     }
 }
