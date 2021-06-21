@@ -1,12 +1,17 @@
 using System;
+using System.Threading;
 
 namespace TicTacToe
 {
     class Game
     {
+        // Definicion de las jugadas que el usuario puede hacer
         readonly string[] plays = { "1 1", "1 2", "1 3", "2 1", "2 2", "2 3", "3 1", "3 2", "3 3" };
+        // Movimientos en el tablero
         readonly char[] moves = { '-', '-', '-', '-', '-', '-', '-', '-', '-' };
+        // String para capturar la jugada del usuario
         string coordinate;
+        // int para definir si es X u O
         int counterXO = 0;
         private readonly Random random = new Random();
         bool endGame = true;
@@ -18,9 +23,14 @@ namespace TicTacToe
             
             do
             {
+                //Se captura la jugada del usuario
                 Console.Write("Enter the coordinates: ");
                 coordinate = Console.ReadLine();
-                CheckMove(coordinate);
+                //Se verifica si la jugada es valida
+                if (!CheckMove(coordinate))
+                {
+                    Console.WriteLine("Invalid Move. Please try again.");
+                }
 
             } while (endGame);
 
@@ -29,6 +39,7 @@ namespace TicTacToe
 
         private void ShowBoard()
         {
+            // Aqui se muestra el tablero
             Console.WriteLine("---------");
             Console.WriteLine($"| {moves[0]} {moves[1]} {moves[2]} |");
             Console.WriteLine($"| {moves[3]} {moves[4]} {moves[5]} |");
@@ -40,10 +51,13 @@ namespace TicTacToe
         {
             for (int i = 0; i < plays.GetLength(0); i++)
             {
+                //Se verifica si la jugada es valida
                 if (plays[i].Equals(coordinate))
                 {
+                    //Se verifica que no hayan una pieza en la posicion
                     if (moves[i].Equals('-'))
                     {
+                        // Se determina si es X u O
                         if (counterXO % 2 == 0)
                         {
                             moves[i] = 'X';
@@ -129,6 +143,7 @@ namespace TicTacToe
             Console.WriteLine("Please select a number: ");
             Console.WriteLine("1. 1 vs 1");
             Console.WriteLine("2. 1 vs Computer");
+            Console.WriteLine("3. Computer vs Computer");
 
             string option = Console.ReadLine();
 
@@ -142,6 +157,10 @@ namespace TicTacToe
             {
                 OneVsComputer();   
             }
+            else if (option == "3")
+            {
+                ComputerVsComputer();
+            }
         }
 
         private void OneVsComputer()
@@ -154,16 +173,23 @@ namespace TicTacToe
 
                 if (counterXO % 2 == 0)
                 {
+                    // Se captura la jugada del usuario
                     Console.Write("Enter the coordinates: ");
                     coordinate = Console.ReadLine();
-                    CheckMove(coordinate);
+                    // Se verifica si el movimiento es valido
+                    if (!CheckMove(coordinate))
+                    {
+                        Console.WriteLine("Invalid Move. Please try again.");
+                    }
                 }
                 else
                 {
-                    Console.ReadKey();
+                    Thread.Sleep(800);
+                    // Se busca un movimiento valido dentro del array
                     for (int i = 0; i < plays.Length; i++)
                     {
                         coordinate = plays[random.Next(9)];
+                        // Si el movimiento es valido sale del array
                         if (CheckMove(coordinate))
                         {
                             break;
@@ -172,17 +198,18 @@ namespace TicTacToe
                 }
 
             } while (endGame);
-
+            // Jugar de nuevo
             NewGame();
         }
 
         private bool CheckMove(string coordinate)
-        {
+        {   
+            // Se verifica si el movimiento es valido
             if (ValidMove())
             {
                 Console.Clear();
                 ShowBoard();
-
+                // Se comprueba si el juego termino
                 if (EndGame())
                 {
                     if (counterXO % 2 == 0)
@@ -195,6 +222,7 @@ namespace TicTacToe
                     }
                     endGame = false;    
                 }
+                // Se comprueba si hay un empate
                 else if (counterXO > 8)
                 {
                     Console.WriteLine("Tie!");
@@ -204,9 +232,32 @@ namespace TicTacToe
             }
             else
             {
-                Console.WriteLine("Invalid Move. Please try again.");
                 return false;
             }
+        }
+
+        private void ComputerVsComputer()
+        {
+            Console.WriteLine("Enter the coordinates: (x,y)");
+            ShowBoard();
+
+            do
+            {
+                Thread.Sleep(1500);
+                // Se busca un movimiento valido
+                for (int i = 0; i < plays.Length; i++)
+                {
+                    coordinate = plays[random.Next(9)];
+                    // Si el movimiento es valido sale del for
+                    if (CheckMove(coordinate))
+                    {
+                       break;
+                    }
+                }
+
+            } while (endGame);
+
+            NewGame();
         }
     }
 }
